@@ -15,6 +15,7 @@ WORKDIR /app
 COPY server/package.json server/package-lock.json ./
 RUN npm install
 
+RUN mkdir data
 COPY server/ ./
 
 COPY --from=build /app/build ./public
