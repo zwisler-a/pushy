@@ -15,14 +15,10 @@ function App() {
         await setToken(token)
     }
 
-    const onSendNotification = () => {
-        notify('/', "Title", "Body")
-    }
-
     return (
         <div className="App">
-            <h1>Pushy</h1>
             <img className="logo" alt="Logo" src="./logo.webp"/>
+            <h1>Pushy</h1>
         </div>
     );
 }

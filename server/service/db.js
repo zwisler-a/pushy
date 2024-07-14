@@ -32,9 +32,11 @@ export async function getDb() {
 
 export const SQL = {
     GET_DEVICE_BY_TOKEN: `SELECT * FROM device WHERE token=?`,
+    GET_DEVICE_BY_ID: `SELECT * FROM device WHERE id=?`,
     GET_ALL_DEVICES: `SELECT * FROM device`,
     ADD_DEVICE: `INSERT INTO device (name, token) VALUES (?, ?)`,
     ADD_SUBSCRIPTION: `INSERT INTO subscription (device_id, topic) VALUES (?, ?)`,
+    REMOVE_SUBSCRIPTION: `DELETE FROM subscription WHERE device_id=? AND topic=?`,
     GET_SUBSCRIPTIONS_BY_DEVICE: `SELECT * FROM subscription WHERE device_id=?`,
     GET_SUBSCRIPTIONS: `SELECT * FROM subscription`,
     GET_TOKENS_BY_SUBSCRIPTION: `SELECT d.token FROM device d JOIN subscription s ON s.device_id = d.id WHERE s.topic = ?`,
