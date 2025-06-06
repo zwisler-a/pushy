@@ -18,7 +18,7 @@ RUN npm install
 RUN mkdir data
 COPY server/ ./
 
-COPY --from=build /app/build ./public
+COPY --from=build /app/dist ./public
 
 EXPOSE 3000
 
