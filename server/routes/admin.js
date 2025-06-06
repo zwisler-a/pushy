@@ -16,10 +16,11 @@ router.post('/notify', async function (req, res, next) {
 
     const promises = tokens.map(token => messaging.send({
         token: token.token,
-        data: {
+        notification: {
             title: title,
             body: body
-        }
+        },
+
     }).catch(err => {
     }))
     await Promise.all(promises)
@@ -49,8 +50,8 @@ router.post('/notify-template', async function (req, res, next) {
 
         const promises = tokens.map(token => messaging.send({
             token: token.token,
-            data: {
-                title: title,
+            notification: {
+                title,
                 body: body
             }
         }).catch(err => {

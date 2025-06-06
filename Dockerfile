@@ -2,10 +2,10 @@ FROM node:21-alpine as build
 
 WORKDIR /app
 
-COPY ui/package.json ui/package-lock.json ./
+COPY client/package.json client/package-lock.json ./
 RUN npm install
 
-COPY ui/ ./
+COPY client/ ./
 RUN npm run build
 
 FROM node:21-alpine

@@ -39,5 +39,5 @@ export const SQL = {
     REMOVE_SUBSCRIPTION: `DELETE FROM subscription WHERE device_id=? AND topic=?`,
     GET_SUBSCRIPTIONS_BY_DEVICE: `SELECT * FROM subscription WHERE device_id=?`,
     GET_SUBSCRIPTIONS: `SELECT * FROM subscription`,
-    GET_TOKENS_BY_SUBSCRIPTION: `SELECT d.token FROM device d JOIN subscription s ON s.device_id = d.id WHERE s.topic = ?`,
+    GET_TOKENS_BY_SUBSCRIPTION: `SELECT d.token FROM device d JOIN subscription s ON s.device_id = d.id WHERE ? LIKE REPLACE(s.topic, '*', '%')`,
 }

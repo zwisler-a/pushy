@@ -13,7 +13,7 @@ export const app = initializeApp({
 
 const messaging = getMessaging(app);
 
-onMessage(messaging, (payload) => {
+onMessage(messaging, (payload: any) => {
     alert(JSON.stringify(payload))
 });
 
