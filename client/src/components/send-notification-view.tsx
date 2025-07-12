@@ -6,9 +6,10 @@ function SendNotificationView() {
         const topic = formData.get("topic") as string;
         const title = formData.get("title") as string;
         const body = formData.get("body") as string;
+        const imageUrl = formData.get("imageUrl") as string;
         event.preventDefault();
         setTimeout(() => {
-            notify(topic, title, body);
+            notify(topic, title, body, imageUrl);
         }, 1000)
     }
 
@@ -17,6 +18,7 @@ function SendNotificationView() {
         <input name="topic" placeholder="Topic"/>
         <input name="title" placeholder="Title"/>
         <input name="body" placeholder="Body"/>
+        <input name="imageUrl" placeholder="Body"/>
         <button>Send</button>
     </form>
 }

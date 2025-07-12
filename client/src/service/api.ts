@@ -29,10 +29,10 @@ export async function unsubscribeDevice(token: string, topic: string) {
     })
 }
 
-export async function notify(topic: string, title: string, body: string) {
+export async function notify(topic: string, title: string, body: string, imageUrl: string) {
     await fetch(`/api/admin/notify`, {
         method: 'POST',
-        body: JSON.stringify({topic, title, body}),
+        body: JSON.stringify({topic, title, body, imageUrl}),
         headers: {'Content-Type': 'application/json'}
     })
 }

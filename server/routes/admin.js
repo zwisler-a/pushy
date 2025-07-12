@@ -9,6 +9,7 @@ router.post('/notify', async function (req, res, next) {
     const topic = req.body.topic || req.query.topic || '/'
     const title = req.body.title || req.query.title || 'Notification'
     const body = req.body.body || req.query.body || 'No Body available'
+    const imageUrl = req.body.imageUrl || req.query.imageUrl || undefined
 
     const db = await getDb();
     const tokens = await db.all(SQL.GET_TOKENS_BY_SUBSCRIPTION, [topic])
@@ -18,7 +19,8 @@ router.post('/notify', async function (req, res, next) {
         token: token.token,
         notification: {
             title: title,
-            body: body
+            body: body,
+            imageUrl: imageUrl,
         },
 
     }).catch(err => {
@@ -32,6 +34,7 @@ router.post('/notify-template', async function (req, res, next) {
     const topic = req.body.topic || req.query.topic || '/'
     const bodyTemplate = req.body.bodyTemplate || req.query.bodyTemplate || 'No Body'
     const titleTemplate = req.body.titleTemplate || req.query.titleTemplate || 'No Title'
+    const imageUrl = req.body.imageUrl || req.query.imageUrl || undefined
 
     try {
         function substituteValues(template, context) {
@@ -52,7 +55,8 @@ router.post('/notify-template', async function (req, res, next) {
             token: token.token,
             notification: {
                 title,
-                body: body
+                body: body,
+                imageUrl: imageUrl
             }
         }).catch(err => {
         }))
