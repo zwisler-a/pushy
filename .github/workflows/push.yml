@@ -28,3 +28,8 @@ jobs:
           push: true
           tags: zwisler/pushy:latest
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Trigger n8n workflow
+        run: |
+          curl -u "${{ secrets.N8N_USER }}:${{ secrets.N8N_PASS }}" \
+            "https://n8n.zwisler.dev/webhook/4088dc6b-76e7-4586-a270-1be2fa7f0ceb?tag=${{ steps.tag.outputs.TAG }}"
