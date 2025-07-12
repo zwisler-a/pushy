@@ -10,6 +10,7 @@ router.post('/notify', async function (req, res, next) {
     const title = req.body.title || req.query.title || 'Notification'
     const body = req.body.body || req.query.body || 'No Body available'
     const imageUrl = req.body.imageUrl || req.query.imageUrl || undefined
+    const iconUrl = req.body.imageUrl || req.query.imageUrl || undefined
 
     const db = await getDb();
     const tokens = await db.all(SQL.GET_TOKENS_BY_SUBSCRIPTION, [topic])
@@ -21,6 +22,7 @@ router.post('/notify', async function (req, res, next) {
             title: title,
             body: body,
             imageUrl: imageUrl,
+            icon: iconUrl
         },
 
     }).catch(err => {
@@ -35,6 +37,7 @@ router.post('/notify-template', async function (req, res, next) {
     const bodyTemplate = req.body.bodyTemplate || req.query.bodyTemplate || 'No Body'
     const titleTemplate = req.body.titleTemplate || req.query.titleTemplate || 'No Title'
     const imageUrl = req.body.imageUrl || req.query.imageUrl || undefined
+    const iconUrl = req.body.imageUrl || req.query.imageUrl || undefined
 
     try {
         function substituteValues(template, context) {
@@ -56,7 +59,8 @@ router.post('/notify-template', async function (req, res, next) {
             notification: {
                 title,
                 body: body,
-                imageUrl: imageUrl
+                imageUrl: imageUrl,
+                icon: iconUrl
             }
         }).catch(err => {
         }))
