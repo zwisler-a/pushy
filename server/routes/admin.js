@@ -24,7 +24,15 @@ router.post('/notify', async function (req, res, next) {
             imageUrl: imageUrl,
             icon: iconUrl
         },
-
+        webpush: {
+            headers: {
+                "Urgency": "high"
+            }
+        },
+        android: {
+            priority: "high"
+        },
+        priority: 10
     }).catch(err => {
     }))
     await Promise.all(promises)
@@ -61,7 +69,16 @@ router.post('/notify-template', async function (req, res, next) {
                 body: body,
                 imageUrl: imageUrl,
                 icon: iconUrl
-            }
+            },
+            webpush: {
+                headers: {
+                    "Urgency": "high"
+                }
+            },
+            android: {
+                priority: "high"
+            },
+            priority: 10
         }).catch(err => {
         }))
         await Promise.all(promises)
