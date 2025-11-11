@@ -32,7 +32,6 @@ router.post('/notify', async function (req, res, next) {
         android: {
             priority: "high"
         },
-        priority: 10
     }).catch(err => {
         console.error(err)
     }))
@@ -79,7 +78,6 @@ router.post('/notify-template', async function (req, res, next) {
             android: {
                 priority: "high"
             },
-            priority: 10
         }).catch(err => {
             console.log(err)
         }))
