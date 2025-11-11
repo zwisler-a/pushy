@@ -34,6 +34,7 @@ router.post('/notify', async function (req, res, next) {
         },
         priority: 10
     }).catch(err => {
+        console.error(err)
     }))
     await Promise.all(promises)
     res.send({success: true});
@@ -80,6 +81,7 @@ router.post('/notify-template', async function (req, res, next) {
             },
             priority: 10
         }).catch(err => {
+            console.log(err)
         }))
         await Promise.all(promises)
         res.send({success: true});
